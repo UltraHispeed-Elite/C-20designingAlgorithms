@@ -1,4 +1,5 @@
 var frect,mrect,edges;
+var go1, go2, go3,go4;
 
 function setup() {
   createCanvas(1200,800);
@@ -8,8 +9,17 @@ function setup() {
   mrect.shapeColor= "blue";
   edges = createEdgeSprites();
 
-  mrect.velocityX=-5;
-  frect.velocityX=5;
+  go1 = createSprite(200,100,50,50);
+  go1.shapeColor="white";
+  go2 = createSprite(400,100,50,50);
+  go2.shapeColor="blue";
+  go3 = createSprite(600,100,50,50);
+  go3.shapeColor="yellow";
+  go4 = createSprite(800,100,50,50);
+  go4.shapeColor="black";
+
+  //mrect.velocityX=-5;
+  //frect.velocityX=5;
 }
 
 function draw() {
@@ -25,35 +35,23 @@ function draw() {
   mrect.bounceOff(edges[2]);
   mrect.bounceOff(edges[3]);
 
-  if(mrect.x-frect.x<frect.width/2+mrect.width/2
-    && frect.x-mrect.x<frect.width/2+mrect.width/2
-    ){
-   mrect.velocityX=mrect.velocityX*(-5);
-   frect.velocityX=frect.velocityX*(-5);
-    }
-    if(mrect.y-frect.y<frect.height/2+mrect.height/2
-      && frect.y-mrect.y<frect.height/2+mrect.height/2
-    ){
-      mrect.velocityY=mrect.velocityY*(-5);
-      frect.velocityY=frect.velocityY*(-5);
-    }
- // mrect.x = World.mouseX;
- // mrect.y = World.mouseY;
+  
+ mrect.x = World.mouseX;
+ mrect.y = World.mouseY;
 
 
-  /*if(mrect.x-frect.x<frect.width/2+mrect.width/2
-    && frect.x-mrect.x<frect.width/2+mrect.width/2
-    && mrect.y-frect.y<frect.height/2+mrect.height/2
-    && frect.y-mrect.y<frect.height/2+mrect.height/2
-    ){
+/*if(isTouching(mrect,go3)){
   mrect.shapeColor = "yellow";
-  frect.shapeColor = "yellow";
+  //go1.shapeColor = "black";
+  go3.shapeColor = "green";
   }
   else{
     mrect.shapeColor = "blue";
-    frect.shapeColor = "blue";
+    //go1.shapeColor = "white";
+    go3.shapeColor= "yellow";
   }*/
-
-
+isTouching(mrect,go3);
+bounceOff(mrect, frect);
   drawSprites();
 }
+
